@@ -1,4 +1,25 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Content-Type: application/json");
 
-echo "asssssssssss";
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+switch ($uri) {
+
+    case '/':
+        echo "alo de l'api :)";
+        break;
+
+    case '/getPizzas':
+        require DIR . '/get_pizzas.php';
+        break;
+
+    default:
+        http_response_code(404);
+        echo json_encode([
+            "error" => "Route not found",
+            "path" => $uri
+        ]);
+}
