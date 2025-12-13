@@ -12,8 +12,8 @@ switch ($uri) {
         require DIR . '/index.php';
         break;
 
-    case '/api/users':
-        require DIR . '/api/users.php';
+    case '/getPizzas':
+        require DIR . '/get_pizzas.php';
         break;
 
     default:
