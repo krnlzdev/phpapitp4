@@ -4,7 +4,17 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Content-Type: application/json");
 
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit;
+}
+
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+$uri = rtrim($uri, '/');
+if ($uri === '') {
+    $uri = '/';
+}
 
 switch ($uri) {
 
@@ -13,7 +23,7 @@ switch ($uri) {
         break;
 
     case '/getPizzas':
-        require DIR . '/get_pizzas.php';
+        require __DIR__ . '/get_pizzas.php';
         break;
 
     default:
