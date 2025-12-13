@@ -10,15 +10,6 @@ $password   = getenv('DB_PASS');
 $dbname     = getenv('DB_NAME');
 $port       = getenv('DB_PORT');
 
-// 2. Si Render ne nous donne rien (ou si on est en local), on utilise les valeurs en dur
-if (!$servername) {
-    $servername = "mysql-30694ee1-tp4mobile.g.aivencloud.com";
-    $username   = "avnadmin";
-    $password   = "AVNS_99o70H67C0KE0a3x6uy";
-    $dbname     = "defaultdb";
-    $port       = "23050";
-}
-
 // 3. Connexion
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 
