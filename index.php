@@ -26,6 +26,19 @@ switch ($uri) {
         require __DIR__ . '/get_pizzas.php';
         break;
 
+    case '/getOrders':
+        require __DIR__ . '/get_mes_commandes.php';
+        break;
+
+    case '/login':
+        require __DIR__ . '/login.php';
+        break;
+
+    case '/register':
+        require __DIR__ . '/inscription.php';
+        break;
+
+
     default:
         http_response_code(404);
         echo json_encode([
